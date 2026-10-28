@@ -23,7 +23,7 @@
     <button data-page="sessionsPage">◷ <span class="label">Ensaios</span></button>
     <button data-page="financePage">R$ <span class="label">Financeiro</span></button>
   </nav>
-  <div class="sidebar-note"><strong>Seu estúdio, organizado.</strong><br>Agenda, clientes e pagamentos num só lugar.<br><br>Os dados desta demonstração ficam salvos neste navegador.</div>
+  <div class="sidebar-note"><strong>Seu estúdio, organizado.</strong><br>Agenda, clientes e pagamentos num só lugar.<br><br>Entre na sua conta para sincronizar os ensaios entre dispositivos.</div>
 </aside>
 <main class="main">
 <header class="topbar">
@@ -104,8 +104,8 @@ const due=s=>Math.max(0,(Number(s.packageValue)||0)-getPaid(s));
 const active=s=>s.status!=='Cancelado';
 // Configure estes dois valores com os dados do seu projeto Supabase.
 // Use somente a chave publicável/anon (nunca service_role) no navegador.
-const SUPABASE_URL = 'COLE_AQUI_A_URL_DO_SUPABASE';
-const SUPABASE_ANON_KEY = 'COLE_AQUI_A_CHAVE_PUBLICA_ANON';
+const SUPABASE_URL = 'https://qjjzvaqhxwcwmirsfyrk.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_dFAQsiID5dabg02K1L1Gvg_IUiUSbOF';
 const CLOUD_ENABLED = SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('COLE_AQUI') && !SUPABASE_ANON_KEY.includes('COLE_AQUI');
 let supabaseClient = null, cloudUser = null, cloudBusy = false;
 let sessions=[];
@@ -145,10 +145,16 @@ async function loadCloudSessions(){
   const {data,error}=await supabaseClient.from('photo_sessions').select('*').order('session_date',{ascending:true});
   if(error)throw error;
   const cloudRows=(data||[]).map(rowToSession);
-  sessions=cloudRows;
+  // Na primeira conexão, preserva ensaios locais que ainda não estão na nuvem.
+  // Se um ID já existir na nuvem, a versão da nuvem prevalece.
+  const cloudIds=new Set(cloudRows.map(s=>String(s.id)));
+  const localOnly=sessions.filter(s=>!String(s.id||'').startsWith('demo')&&!cloudIds.has(String(s.id)));
+  sessions=[...cloudRows,...localOnly];
   localStorage.setItem('estudio_sessions_v1',JSON.stringify(sessions));
-  renderAll();setSyncStatus('Sincronizado',true);
- }catch(e){console.error(e);setSyncStatus('Erro de conexão');toast('Não foi possível carregar os dados da nuvem.')}
+  renderAll();
+  if(localOnly.length){await syncAllToCloud();}
+  else setSyncStatus('Sincronizado',true);
+ }catch(e){console.error(e);setSyncStatus('Erro de conexão');toast('Não foi possível carregar os dados da nuvem. Confira a tabela e as permissões.')}
 }
 async function initCloud(){
  if(!CLOUD_ENABLED){setSyncStatus('Modo local');return}

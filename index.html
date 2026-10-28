@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estúdio — Agenda Fotográfica</title>
+<style>
+:root{--site-primary:#285744;--site-secondary:#dfece4;--site-background:#f5f7f5;--site-on-primary:#fff;--site-on-secondary:#183d2d;--site-on-background:#1d2922;--site-font-body:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;--site-font-heading:Inter,ui-sans-serif,system-ui,sans-serif;--site-heading-scale:1;--site-spacing-scale:1;--site-radius-scale:1;--site-decoration-opacity:1;color-scheme:light dark}
+*{box-sizing:border-box}body{margin:0;font-family:var(--site-font-body);background:light-dark(#f4f6f4,#111713);color:light-dark(#1d2922,#e7eee9)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;font-weight:650}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #78a78c;outline-offset:2px}.app{min-height:100vh;background-color:light-dark(#f4f6f4,#111713);color:light-dark(#1d2922,#e7eee9)}.layout{display:grid;grid-template-columns:238px 1fr;min-height:100vh}.sidebar{background:light-dark(#fff,#19211c);border-right:1px solid light-dark(#e3e8e4,#2d3931);padding:24px 16px}.brand{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:800;margin:0 8px 30px}.brandmark{width:36px;height:36px;border-radius:12px;background:#285744;color:white;display:grid;place-items:center}.nav{display:grid;gap:7px}.nav button{background:transparent;text-align:left;color:light-dark(#536259,#aebbb2);display:flex;gap:11px;align-items:center}.nav button.active,.nav button:hover{background:light-dark(#e6efe9,#26382c);color:light-dark(#285744,#b9e0c8)}.sidebar-note{margin-top:32px;padding:14px;border-radius:14px;background:light-dark(#f0f5f1,#222d25);font-size:12px;color:light-dark(#647269,#b0bdb4);line-height:1.5}.main{padding:28px clamp(16px,3vw,36px);max-width:1500px;width:100%;margin:0 auto}.topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:26px}.eyebrow{font-size:12px;color:#719080;text-transform:uppercase;letter-spacing:.1em;font-weight:800}.h1{font-size:clamp(25px,3vw,32px);margin:5px 0 0;letter-spacing:-.04em}.muted{color:light-dark(#738078,#a0ada4)}.primary{background:#285744;color:white}.secondary{background:light-dark(#e5eee8,#2a3930);color:light-dark(#285744,#d4ebdb)}.ghost{background:transparent;color:inherit;border:1px solid light-dark(#dce4de,#3a4940)}.danger{background:light-dark(#fae8e6,#472b28);color:light-dark(#9d3930,#ffb6ac)}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:22px}.stat,.panel{border:1px solid light-dark(#e1e7e2,#2b3730);background:light-dark(#fff,#19211c);border-radius:18px;padding:18px}.stat-top{display:flex;justify-content:space-between;align-items:center;color:light-dark(#69776e,#a5b3a9);font-size:13px}.stat-icon{width:34px;height:34px;border-radius:11px;background:light-dark(#e8f1eb,#293a2f);display:grid;place-items:center}.stat-value{font-size:clamp(22px,2.5vw,29px);font-weight:800;letter-spacing:-.04em;margin-top:17px}.stat-foot{font-size:12px;color:light-dark(#7a877f,#a6b1a9);margin-top:5px}.content-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:18px}.panel{padding:20px;margin-bottom:18px}.panel-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px}.panel-title{font-size:17px;font-weight:800;letter-spacing:-.02em}.calendar-tools{display:flex;align-items:center;gap:8px}.calendar-tools button{padding:7px 10px}.month-label{font-weight:750;min-width:125px;text-align:center}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.weekday{text-align:center;font-size:11px;color:light-dark(#839087,#9aa99e);padding:6px 0;font-weight:750}.day{border:1px solid light-dark(#edf0ed,#2a342d);border-radius:10px;min-height:76px;padding:7px 5px;background:light-dark(#fff,#19211c);text-align:left;color:inherit;min-width:0}.day.outside{opacity:.42}.day.today{border-color:#4d8969;background:light-dark(#f0f7f2,#23372a)}.day-num{font-size:12px;font-weight:700}.day-events{display:grid;gap:3px;margin-top:6px}.event-dot{font-size:10px;line-height:1.2;background:light-dark(#dfece4,#304d3a);color:light-dark(#285744,#d7f0de);border-radius:4px;padding:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.event-dot.pending{background:light-dark(#fff0d7,#493a24);color:light-dark(#91611a,#f6d39a)}.upcoming{display:grid;gap:0}.appointment{display:flex;gap:12px;padding:13px 0;border-top:1px solid light-dark(#edf0ed,#2a342d)}.appointment:first-child{border-top:0;padding-top:0}.date-chip{width:48px;height:52px;flex-shrink:0;border-radius:12px;background:light-dark(#e7f0e9,#293a2f);display:flex;flex-direction:column;align-items:center;justify-content:center;color:light-dark(#285744,#d4ebdb)}.date-chip strong{font-size:19px}.date-chip small{font-size:10px;text-transform:uppercase}.appt-info{min-width:0;flex:1}.appt-info strong{display:block;font-size:14px}.appt-info small{display:block;color:light-dark(#7a877f,#a6b1a9);margin-top:4px;line-height:1.35}.pill{display:inline-flex;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:750;background:light-dark(#e5eee8,#2b3c31);color:light-dark(#285744,#c7e6d0)}.pill.pending{background:light-dark(#fff0d7,#493a24);color:light-dark(#91611a,#f6d39a)}.pill.cancelled{background:light-dark(#fae8e6,#472b28);color:light-dark(#9d3930,#ffb6ac)}.money-row{display:flex;justify-content:space-between;gap:10px;font-size:13px;margin:13px 0}.progress{height:8px;border-radius:999px;background:light-dark(#e8ede9,#303a33);overflow:hidden}.progress span{display:block;height:100%;background:#4f8b69;border-radius:999px}.page{display:none}.page.active{display:block}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.toolbar input,.toolbar select{min-width:160px;flex:1}.field,input,select,textarea{width:100%;border:1px solid light-dark(#dce4de,#3a4940);border-radius:10px;padding:11px 12px;background:light-dark(#fff,#131a15);color:inherit}.field-label{font-size:12px;font-weight:750;display:block;margin:0 0 6px;color:light-dark(#56645b,#bac5bd)}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.form-grid .full{grid-column:1/-1}.form-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:20px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:720px}th,td{text-align:left;padding:13px 10px;border-bottom:1px solid light-dark(#edf0ed,#2a342d);font-size:13px}th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:light-dark(#7a877f,#a6b1a9)}td strong{display:block}td small{color:light-dark(#7a877f,#a6b1a9)}.actions{display:flex;gap:6px}.actions button{padding:7px 9px;font-size:12px}.empty{padding:28px;text-align:center;color:light-dark(#7a877f,#a6b1a9)}.notice{font-size:12px;line-height:1.5;color:light-dark(#65736a,#b2beb5);background:light-dark(#f1f5f2,#202b23);border-radius:12px;padding:12px;margin-top:14px}.modal-backdrop{position:fixed;inset:0;background:#07110bb3;display:none;align-items:center;justify-content:center;padding:18px;z-index:5;overflow:auto}.modal-backdrop.open{display:flex}.modal{background:light-dark(#fff,#19211c);color:inherit;border:1px solid light-dark(#e1e7e2,#2b3730);border-radius:20px;padding:24px;width:min(720px,100%);max-height:94vh;overflow:auto;box-shadow:0 20px 70px #0003}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.modal-head h2{margin:0;font-size:22px}.close{background:transparent;border:1px solid light-dark(#dce4de,#3a4940);padding:7px 10px}.toast{position:fixed;bottom:20px;right:20px;background:#285744;color:#fff;padding:13px 18px;border-radius:12px;box-shadow:0 8px 30px #0003;display:none;z-index:10}.toast.show{display:block}.mobile-menu{display:none}
+@media(max-width:1050px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.content-grid{grid-template-columns:1fr}.sidebar{width:205px}.layout{grid-template-columns:205px 1fr}}
+@media(max-width:720px){.layout{display:block}.sidebar{position:sticky;top:0;z-index:3;padding:10px 12px;border-right:0;border-bottom:1px solid light-dark(#e3e8e4,#2d3931)}.brand{margin:0;font-size:16px}.brandmark{width:32px;height:32px}.nav{display:flex;overflow:auto;margin-top:10px;gap:5px}.nav button{white-space:nowrap;font-size:12px;padding:9px}.nav button span.label{display:inline}.sidebar-note{display:none}.main{padding:20px 13px}.topbar{align-items:flex-start}.topbar .primary{padding:10px;font-size:12px}.stats{gap:9px}.stat{padding:14px;border-radius:14px}.stat-value{margin-top:12px}.stat-foot{line-height:1.4}.panel{padding:14px;border-radius:15px}.day{min-height:62px;padding:5px 3px}.event-dot{font-size:9px}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.panel-head{align-items:flex-start;flex-wrap:wrap}.calendar-tools{width:100%;justify-content:space-between}.month-label{flex:1}.toolbar input,.toolbar select{min-width:100%}.appointment .actions{flex-direction:column}.modal{padding:18px}.topbar .eyebrow{font-size:10px}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<div class="app">
+<div class="layout">
+<aside class="sidebar">
+  <div class="brand"><div class="brandmark">✦</div><span>Estúdio<span style="color:#6d9a7e">.</span></span></div>
+  <nav class="nav" aria-label="Navegação">
+    <button class="active" data-page="dashboard">▦ <span class="label">Dashboard</span></button>
+    <button data-page="calendarPage">▦ <span class="label">Calendário</span></button>
+    <button data-page="sessionsPage">◷ <span class="label">Ensaios</span></button>
+    <button data-page="financePage">R$ <span class="label">Financeiro</span></button>
+  </nav>
+  <div class="sidebar-note"><strong>Seu estúdio, organizado.</strong><br>Agenda, clientes e pagamentos num só lugar.<br><br>Os dados desta demonstração ficam salvos neste navegador.</div>
+</aside>
+<main class="main">
+<header class="topbar">
+  <div><div class="eyebrow">Gestão fotográfica</div><h1 class="h1" id="pageTitle">Bom dia! 👋</h1><div class="muted" style="margin-top:6px;font-size:13px" id="pageSubtitle">Aqui está o resumo do seu estúdio.</div></div>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+  <span class="pill pending" id="syncStatus">Modo local</span>
+  <button class="ghost" id="accountBtn" type="button">Entrar / sincronizar</button>
+  <button class="primary" id="newBtn">＋ Novo ensaio</button>
+</div>
+</header>
+<section class="page active" id="dashboard">
+  <div class="stats">
+    <div class="stat"><div class="stat-top"><span>Ensaios agendados</span><span class="stat-icon">📸</span></div><div class="stat-value" id="statBooked">0</div><div class="stat-foot">Não cancelados</div></div>
+    <div class="stat"><div class="stat-top"><span>Próximos 7 dias</span><span class="stat-icon">🗓</span></div><div class="stat-value" id="statWeek">0</div><div class="stat-foot">A partir de hoje</div></div>
+    <div class="stat"><div class="stat-top"><span>Total contratado</span><span class="stat-icon">▤</span></div><div class="stat-value" id="statRevenue">R$ 0</div><div class="stat-foot">Ensaios não cancelados</div></div>
+    <div class="stat"><div class="stat-top"><span>A receber</span><span class="stat-icon">↗</span></div><div class="stat-value" id="statDue">R$ 0</div><div class="stat-foot">Saldo em aberto</div></div>
+  </div>
+  <div class="content-grid">
+    <div class="panel"><div class="panel-head"><div><div class="panel-title">Calendário de ensaios</div><div class="muted" style="font-size:12px;margin-top:4px">Selecione um dia para ver os compromissos</div></div><button class="ghost" data-goto="calendarPage">Ver calendário ↗</button></div><div id="miniCalendar"></div></div>
+    <div>
+      <div class="panel"><div class="panel-head"><div class="panel-title">Próximos ensaios</div><button class="ghost" data-goto="sessionsPage">Ver todos</button></div><div class="upcoming" id="upcomingList"></div></div>
+      <div class="panel"><div class="panel-head"><div class="panel-title">Resumo financeiro</div></div><div class="money-row"><span class="muted">Recebido</span><strong id="receivedValue">R$ 0</strong></div><div class="progress"><span id="receivedBar" style="width:0%"></span></div><div class="money-row"><span class="muted">Em aberto</span><strong id="dueValue">R$ 0</strong></div><div class="notice">Os valores são calculados automaticamente com base nos pagamentos registrados em cada ensaio.</div></div>
+    </div>
+  </div>
+</section>
+<section class="page" id="calendarPage"><div class="panel"><div class="panel-head"><div><div class="panel-title">Calendário</div><div class="muted" style="font-size:12px;margin-top:4px">Clique em um compromisso para editar</div></div><div class="calendar-tools"><button class="ghost" id="prevMonth">←</button><div class="month-label" id="monthLabel"></div><button class="ghost" id="nextMonth">→</button><button class="secondary" id="todayBtn">Hoje</button></div></div><div id="fullCalendar"></div></div></section>
+<section class="page" id="sessionsPage"><div class="panel"><div class="panel-head"><div><div class="panel-title">Todos os ensaios</div><div class="muted" style="font-size:12px;margin-top:4px">Cadastre, edite e acompanhe cada cliente</div></div><button class="primary" id="newBtn2">＋ Novo ensaio</button></div><div class="toolbar"><input id="searchInput" placeholder="Buscar cliente, ensaio ou local…"><select id="statusFilter"><option value="">Todos os estados</option><option>Agendado</option><option>Confirmado</option><option>Realizado</option><option>Cancelado</option></select></div><div class="table-wrap"><table><thead><tr><th>Cliente / ensaio</th><th>Data e hora</th><th>Localização</th><th>Pacote</th><th>Recebido</th><th>Saldo</th><th>Contrato</th><th>Observações</th><th>Estado</th><th>Ações</th></tr></thead><tbody id="sessionsTable"></tbody></table></div></div></section>
+<section class="page" id="financePage"><div class="stats"><div class="stat"><div class="stat-top"><span>Contratado</span><span class="stat-icon">▤</span></div><div class="stat-value" id="finTotal">R$ 0</div></div><div class="stat"><div class="stat-top"><span>Recebido</span><span class="stat-icon">✓</span></div><div class="stat-value" id="finReceived">R$ 0</div></div><div class="stat"><div class="stat-top"><span>Em aberto</span><span class="stat-icon">↗</span></div><div class="stat-value" id="finDue">R$ 0</div></div><div class="stat"><div class="stat-top"><span>Pagamentos pendentes</span><span class="stat-icon">◷</span></div><div class="stat-value" id="finCount">0</div></div></div><div class="panel"><div class="panel-head"><div class="panel-title">Saldos por cliente</div><button class="ghost" id="exportBtn">Exportar CSV</button></div><div class="table-wrap"><table><thead><tr><th>Cliente</th><th>Ensaio</th><th>Valor do pacote</th><th>Recebido</th><th>Saldo em aberto</th><th>WhatsApp</th></tr></thead><tbody id="financeTable"></tbody></table></div></div><div class="notice">Controle financeiro para organização do estúdio. Não substitui sistema contábil. Registre apenas pagamentos efetivamente recebidos.</div></section>
+</main>
+</div>
+</div>
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<div class="modal"><div class="modal-head"><h2 id="modalTitle">Novo ensaio</h2><button class="close" id="closeModal">✕</button></div>
+<form id="sessionForm">
+<input type="hidden" id="sessionId">
+<div class="form-grid">
+<div><label class="field-label" for="clientName">Nome do cliente *</label><input id="clientName" required placeholder="Nome completo"></div>
+<div><label class="field-label" for="phone">WhatsApp / telefone</label><input id="phone" placeholder="(21) 99999-9999" inputmode="tel"></div>
+<div><label class="field-label" for="sessionType">Tipo de ensaio *</label><input id="sessionType" required placeholder="Ex.: Gestante, família, casal"></div>
+<div><label class="field-label" for="status">Estado</label><select id="status"><option>Agendado</option><option>Confirmado</option><option>Realizado</option><option>Cancelado</option></select></div>
+<div><label class="field-label" for="contract">Contrato</label><select id="contract"><option>Enviar</option><option>Enviado</option><option>Assinado</option></select></div>
+<div><label class="field-label" for="date">Data *</label><input id="date" type="date" required></div>
+<div><label class="field-label" for="time">Horário *</label><input id="time" type="time" required value="09:00"></div>
+<div class="full"><label class="field-label" for="location">Local do ensaio</label><input id="location" placeholder="Endereço, praia, estúdio ou link do Maps"></div>
+<div><label class="field-label" for="packageValue">Valor do pacote (R$) *</label><input id="packageValue" type="number" min="0" step="0.01" required placeholder="800,00"></div>
+<div><label class="field-label" for="deposit">Sinal recebido (R$)</label><input id="deposit" type="number" min="0" step="0.01" value="0"></div>
+<div class="full"><label class="field-label" for="extraPayments">Pagamentos adicionais recebidos (R$)</label><input id="extraPayments" type="number" min="0" step="0.01" value="0"><div class="muted" style="font-size:11px;margin-top:5px">Informe o total de pagamentos adicionais, sem incluir o sinal.</div></div>
+<div class="full"><label class="field-label" for="notes">Observações</label><textarea id="notes" rows="3" placeholder="Contrato, preferências, lembretes…"></textarea></div>
+</div>
+<div class="notice" id="balancePreview">Saldo em aberto: R$ 0,00</div>
+<div class="form-actions"><button type="button" class="ghost" id="cancelModal">Cancelar</button><button class="primary" type="submit">Salvar ensaio</button></div>
+</form></div></div>
+
+<div class="modal-backdrop" id="authBackdrop" role="dialog" aria-modal="true" aria-labelledby="authTitle" style="display:none">
+ <div class="modal">
+  <div class="modal-head"><h2 id="authTitle">Entrar na sua agenda</h2><button class="close" id="authClose" type="button">✕</button></div>
+  <p class="muted" style="font-size:13px;line-height:1.5">Use sua conta para sincronizar os ensaios entre computador e telemóvel. Configure primeiro a URL e a chave pública do Supabase neste arquivo.</p>
+  <form id="authForm">
+   <div class="form-grid">
+    <div class="full"><label class="field-label" for="authEmail">E-mail</label><input id="authEmail" type="email" required autocomplete="username" placeholder="voce@email.com"></div>
+    <div class="full"><label class="field-label" for="authPassword">Senha</label><input id="authPassword" type="password" required minlength="8" autocomplete="current-password" placeholder="Mínimo de 8 caracteres"></div>
+   </div>
+   <div class="form-actions" style="justify-content:space-between"><button type="button" class="ghost" id="signUpBtn">Criar conta</button><button type="submit" class="primary">Entrar</button></div>
+   <div class="notice" id="authMessage">A conta é privada. Nunca coloque a chave service_role no navegador.</div>
+  </form>
+ </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<script>
+const $=id=>document.getElementById(id);
+const money=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(n)||0);
+const localISO=d=>{const x=new Date(d.getTime()-d.getTimezoneOffset()*60000);return x.toISOString().slice(0,10)};
+const today=()=>localISO(new Date());
+const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const getPaid=s=>(Number(s.deposit)||0)+(Number(s.extraPayments)||0);
+const due=s=>Math.max(0,(Number(s.packageValue)||0)-getPaid(s));
+const active=s=>s.status!=='Cancelado';
+// Configure estes dois valores com os dados do seu projeto Supabase.
+// Use somente a chave publicável/anon (nunca service_role) no navegador.
+const SUPABASE_URL = 'COLE_AQUI_A_URL_DO_SUPABASE';
+const SUPABASE_ANON_KEY = 'COLE_AQUI_A_CHAVE_PUBLICA_ANON';
+const CLOUD_ENABLED = SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('COLE_AQUI') && !SUPABASE_ANON_KEY.includes('COLE_AQUI');
+let supabaseClient = null, cloudUser = null, cloudBusy = false;
+let sessions=[];
+try{sessions=JSON.parse(localStorage.getItem('estudio_sessions_v1')||'[]')||[];sessions=sessions.filter(s=>!String(s.id||'').startsWith('demo'));localStorage.setItem('estudio_sessions_v1',JSON.stringify(sessions))}catch(e){sessions=[]}
+let viewDate=new Date();viewDate.setDate(1);
+let currentPage='dashboard';
+function persist(){
+ localStorage.setItem('estudio_sessions_v1',JSON.stringify(sessions));
+ renderAll();
+ if(CLOUD_ENABLED && cloudUser && !cloudBusy) syncAllToCloud();
+}
+function setSyncStatus(label, good=false){
+ const el=$('syncStatus'); if(!el)return; el.textContent=label; el.className='pill'+(good?'':' pending');
+}
+function openAuth(){ $('authBackdrop').style.display='flex'; $('authMessage').textContent=CLOUD_ENABLED?'Entre ou crie sua conta para sincronizar seus ensaios.':'Configure SUPABASE_URL e SUPABASE_ANON_KEY no index.html e publique novamente.'; }
+function closeAuth(){ $('authBackdrop').style.display='none'; }
+async function cloudRequest(promise){
+ const {data,error}=await promise; if(error)throw error; return data;
+}
+function rowToSession(r){return {id:r.id,clientName:r.client_name||'',phone:r.phone||'',sessionType:r.session_type||'',status:r.status||'Agendado',contract:r.contract_status||'Enviar',date:r.session_date||today(),time:r.session_time||'09:00',location:r.location||'',packageValue:Number(r.package_value)||0,deposit:Number(r.deposit)||0,extraPayments:Number(r.extra_payments)||0,notes:r.notes||''};}
+function sessionToRow(s){return {id:s.id,user_id:cloudUser.id,client_name:s.clientName,phone:s.phone,session_type:s.sessionType,status:s.status,contract_status:s.contract||'Enviar',session_date:s.date,session_time:s.time,location:s.location,package_value:Number(s.packageValue)||0,deposit:Number(s.deposit)||0,extra_payments:Number(s.extraPayments)||0,notes:s.notes||'',updated_at:new Date().toISOString()};}
+async function syncAllToCloud(){
+ if(!supabaseClient||!cloudUser||cloudBusy)return;
+ try{
+  cloudBusy=true; setSyncStatus('Sincronizando…');
+  const rows=sessions.filter(s=>!String(s.id).startsWith('demo')).map(sessionToRow);
+  const {error}=await supabaseClient.from('photo_sessions').upsert(rows,{onConflict:'id'});
+  if(error)throw error;
+  setSyncStatus('Sincronizado',true);
+ }catch(e){console.error(e);setSyncStatus('Falha na sincronização');toast('Não foi possível sincronizar. Confira a configuração do Supabase.')}
+ finally{cloudBusy=false}
+}
+async function loadCloudSessions(){
+ if(!supabaseClient||!cloudUser)return;
+ try{
+  setSyncStatus('Carregando…');
+  const {data,error}=await supabaseClient.from('photo_sessions').select('*').order('session_date',{ascending:true});
+  if(error)throw error;
+  const cloudRows=(data||[]).map(rowToSession);
+  sessions=cloudRows;
+  localStorage.setItem('estudio_sessions_v1',JSON.stringify(sessions));
+  renderAll();setSyncStatus('Sincronizado',true);
+ }catch(e){console.error(e);setSyncStatus('Erro de conexão');toast('Não foi possível carregar os dados da nuvem.')}
+}
+async function initCloud(){
+ if(!CLOUD_ENABLED){setSyncStatus('Modo local');return}
+ try{
+  if(!window.supabase?.createClient){setSyncStatus('Biblioteca indisponível');return}
+  supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+  const {data:{session}}=await supabaseClient.auth.getSession();
+  if(session){cloudUser=session.user; $('accountBtn').textContent='Sair da conta'; await loadCloudSessions();}else setSyncStatus('Entre para sincronizar');
+  supabaseClient.auth.onAuthStateChange(async (_event,session)=>{
+   cloudUser=session?.user||null;
+   $('accountBtn').textContent=cloudUser?'Sair da conta':'Entrar / sincronizar';
+   if(cloudUser)await loadCloudSessions();else setSyncStatus('Entre para sincronizar');
+  });
+ }catch(e){console.error(e);setSyncStatus('Erro de configuração')}
+}
+async function handleAuthSubmit(e){
+ e.preventDefault();
+ if(!CLOUD_ENABLED||!supabaseClient){$('authMessage').textContent='Ainda não configurado. Siga o README para criar o projeto Supabase e preencher a URL/chave pública.';return}
+ const email=$('authEmail').value.trim(),password=$('authPassword').value;
+ $('authMessage').textContent='Aguarde…';
+ try{
+  const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
+  if(error)throw error;
+  cloudUser=data.user; await loadCloudSessions(); closeAuth(); toast('Login efetuado.');
+ }catch(err){
+  $('authMessage').textContent=err.message||'Não foi possível entrar.';
+ }
+}
+async function handleSignUp(){
+ if(!CLOUD_ENABLED||!supabaseClient){$('authMessage').textContent='Configure primeiro o Supabase no arquivo index.html.';return}
+ const email=$('authEmail').value.trim(),password=$('authPassword').value;
+ if(!email||password.length<8){$('authMessage').textContent='Informe um e-mail e uma senha com pelo menos 8 caracteres.';return}
+ $('authMessage').textContent='Criando conta…';
+ const {error}=await supabaseClient.auth.signUp({email,password});
+ $('authMessage').textContent=error?error.message:'Conta solicitada. Se a confirmação por e-mail estiver ativa, confira sua caixa de entrada.';
+}
+function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2800)}
+function setPage(id){currentPage=id;document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===id));const titles={dashboard:['Bom dia! 👋','Aqui está o resumo do seu estúdio.'],calendarPage:['Calendário','Visualize os seus compromissos por data.'],sessionsPage:['Seus ensaios','Gerencie clientes, horários e detalhes.'],financePage:['Financeiro','Acompanhe valores contratados e saldos.']};$('pageTitle').textContent=titles[id][0];$('pageSubtitle').textContent=titles[id][1];renderAll()}
+function monthName(d){return d.toLocaleDateString('pt-BR',{month:'long',year:'numeric'})}
+function calendarHTML(monthDate){const y=monthDate.getFullYear(),m=monthDate.getMonth(),first=new Date(y,m,1),offset=(first.getDay()+6)%7,start=new Date(y,m,1-offset),days=['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];let h='<div class="calendar">'+days.map(x=>`<div class="weekday">${x}</div>`).join('');for(let i=0;i<42;i++){const d=new Date(start);d.setDate(start.getDate()+i);const iso=localISO(d),daySessions=sessions.filter(s=>s.date===iso&&active(s)).sort((a,b)=>a.time.localeCompare(b.time));h+=`<button class="day ${d.getMonth()!==m?'outside':''} ${iso===today()?'today':''}" data-day="${iso}" aria-label="${iso}, ${daySessions.length} ensaios"><span class="day-num">${d.getDate()}</span><span class="day-events">${daySessions.slice(0,2).map(s=>`<span class="event-dot ${s.status==='Agendado'?'pending':''}" data-edit="${safe(s.id)}">${safe(s.time)} ${safe(s.clientName.split(' ')[0])}</span>`).join('')}${daySessions.length>2?`<span class="muted" style="font-size:9px">+${daySessions.length-2}</span>`:''}</span></button>`}return h+'</div>'}
+function renderCalendars(){$('miniCalendar').innerHTML=calendarHTML(viewDate);$('fullCalendar').innerHTML=calendarHTML(viewDate);$('monthLabel').textContent=monthName(viewDate);document.querySelectorAll('[data-day]').forEach(b=>b.addEventListener('click',e=>{if(e.target.closest('[data-edit]'))return;const date=b.dataset.day;setPage('sessionsPage');$('searchInput').value='';$('statusFilter').value='';renderSessionsTable();const matching=sessions.filter(s=>s.date===date);if(matching.length)toast(`${matching.length} ensaio(s) em ${new Date(date+'T12:00:00').toLocaleDateString('pt-BR')}`);else{ $('date').value=date;openModal()}}));document.querySelectorAll('[data-edit]').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();editSession(el.dataset.edit)}))}
+function appointmentHTML(s){const d=new Date(s.date+'T12:00:00');return `<div class="appointment"><div class="date-chip"><strong>${d.getDate()}</strong><small>${d.toLocaleDateString('pt-BR',{month:'short'}).replace('.','')}</small></div><div class="appt-info"><strong>${safe(s.clientName)}</strong><small>${safe(s.sessionType)} · ${safe(s.time)}</small><small>⌖ ${safe(s.location||'Local a definir')}</small><div style="margin-top:7px;display:flex;gap:6px;align-items:center;flex-wrap:wrap"><span class="pill ${s.status==='Agendado'?'pending':''}">${safe(s.status)}</span><span class="muted" style="font-size:11px">${money(due(s))} em aberto</span></div></div><button class="ghost" style="align-self:center;padding:7px" data-edit="${safe(s.id)}" aria-label="Editar ensaio">↗</button></div>`}
+function renderDashboard(){const live=sessions.filter(active),now=today(),end=localISO(new Date(Date.now()+7*86400000));$('statBooked').textContent=live.length;$('statWeek').textContent=live.filter(s=>s.date>=now&&s.date<=end).length;$('statRevenue').textContent=money(live.reduce((a,s)=>a+Number(s.packageValue||0),0));$('statDue').textContent=money(live.reduce((a,s)=>a+due(s),0));const received=live.reduce((a,s)=>a+getPaid(s),0),total=live.reduce((a,s)=>a+Number(s.packageValue||0),0);$('receivedValue').textContent=money(received);$('dueValue').textContent=money(live.reduce((a,s)=>a+due(s),0));$('receivedBar').style.width=(total?Math.min(100,received/total*100):0)+'%';const upcoming=live.filter(s=>s.date>=now).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)).slice(0,4);$('upcomingList').innerHTML=upcoming.length?upcoming.map(appointmentHTML).join(''):'<div class="empty">Nenhum ensaio futuro.<br>Adicione uma marcação para começar.</div>';document.querySelectorAll('#upcomingList [data-edit]').forEach(b=>b.onclick=()=>editSession(b.dataset.edit))}
+function matchesMonth(s,inputId){const selected=$(inputId)?.value||'';return !selected||String(s.date||'').slice(0,7)===selected}
+function renderSessionsTable(){const q=$('searchInput').value.toLowerCase(),st=$('statusFilter').value;const rows=sessions.filter(s=>matchesMonth(s,'sessionsMonthFilter')&&(!st||s.status===st)&&[s.clientName,s.sessionType,s.location,s.phone,s.notes].join(' ').toLowerCase().includes(q)).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));$('sessionsTable').innerHTML=rows.length?rows.map(s=>`<tr><td><strong>${safe(s.clientName)}</strong><small>${safe(s.sessionType)} · ${safe(s.phone||'Sem telefone')}</small></td><td>${new Date(s.date+'T12:00:00').toLocaleDateString('pt-BR')}<br><small>${safe(s.time)}</small></td><td>${safe(s.location||'A definir')}</td><td>${money(s.packageValue)}</td><td><strong>${money(getPaid(s))}</strong></td><td><strong>${money(due(s))}</strong></td><td><span class="pill ${String(s.contract||'Enviar')==='Assinado'?'':String(s.contract||'Enviar')==='Enviado'?'pending':'cancelled'}">${safe(s.contract||'Enviar')}</span></td><td>${safe(s.notes||'—')}</td><td><span class="pill ${s.status==='Agendado'?'pending':s.status==='Cancelado'?'cancelled':''}">${safe(s.status)}</span></td><td><div class="actions"><button class="ghost" data-edit="${safe(s.id)}">Editar</button><button class="secondary" data-wa="${safe(s.id)}">WhatsApp</button></div></td></tr>`).join(''):'<tr><td colspan="10" class="empty">Nenhum ensaio encontrado neste período.</td></tr>';document.querySelectorAll('#sessionsTable [data-edit]').forEach(b=>b.onclick=()=>editSession(b.dataset.edit));document.querySelectorAll('#sessionsTable [data-wa]').forEach(b=>b.onclick=()=>whatsapp(b.dataset.wa))}
+function renderFinance(){const live=sessions.filter(s=>active(s)&&matchesMonth(s,'financeMonthFilter'));const total=live.reduce((a,s)=>a+Number(s.packageValue||0),0),paid=live.reduce((a,s)=>a+getPaid(s),0),outstanding=live.reduce((a,s)=>a+due(s),0);$('finTotal').textContent=money(total);$('finReceived').textContent=money(paid);$('finDue').textContent=money(outstanding);$('finCount').textContent=live.filter(s=>due(s)>0).length;const rows=live.filter(s=>due(s)>0).sort((a,b)=>due(b)-due(a));$('financeTable').innerHTML=rows.length?rows.map(s=>`<tr><td><strong>${safe(s.clientName)}</strong><small>${safe(s.phone||'Sem telefone')}</small></td><td>${safe(s.sessionType)}<br><small>${new Date(s.date+'T12:00:00').toLocaleDateString('pt-BR')}</small></td><td>${money(s.packageValue)}</td><td>${money(getPaid(s))}</td><td><strong>${money(due(s))}</strong></td><td><button class="secondary" data-wa="${safe(s.id)}">Enviar lembrete</button></td></tr>`).join(''):'<tr><td colspan="6" class="empty">Nenhum saldo em aberto neste período.</td></tr>';document.querySelectorAll('#financeTable [data-wa]').forEach(b=>b.onclick=()=>whatsapp(b.dataset.wa))}
+function setupMonthFilters(){const currentMonth=today().slice(0,7);const sessionsToolbar=document.querySelector('#sessionsPage .toolbar');const sessionLabel=document.createElement('label');sessionLabel.style.cssText='display:flex;align-items:center;gap:8px;flex:1;min-width:220px;font-size:12px;font-weight:700';sessionLabel.innerHTML='<span>Mês e ano:</span><input id="sessionsMonthFilter" type="month" aria-label="Filtrar ensaios por mês e ano">';sessionsToolbar.appendChild(sessionLabel);const financeHead=document.querySelector('#financePage .panel-head');const financeControls=document.createElement('div');financeControls.style.cssText='display:flex;gap:8px;align-items:center;flex-wrap:wrap';financeControls.innerHTML='<label for="financeMonthFilter" style="font-size:12px;font-weight:700;white-space:nowrap">Mês e ano:</label><input id="financeMonthFilter" type="month" aria-label="Filtrar financeiro por mês e ano" style="width:auto;min-width:150px"><button type="button" class="ghost" id="clearFinanceMonth">Todos</button>';financeHead.appendChild(financeControls);$('sessionsMonthFilter').value=currentMonth;$('financeMonthFilter').value=currentMonth;$('sessionsMonthFilter').addEventListener('change',renderSessionsTable);$('financeMonthFilter').addEventListener('change',renderFinance);$('clearFinanceMonth').addEventListener('click',()=>{$('financeMonthFilter').value='';renderFinance()});const clearSessions=document.createElement('button');clearSessions.type='button';clearSessions.className='ghost';clearSessions.textContent='Todos os meses';clearSessions.onclick=()=>{$('sessionsMonthFilter').value='';renderSessionsTable()};sessionsToolbar.appendChild(clearSessions)}
+function renderAll(){renderDashboard();renderCalendars();renderSessionsTable();renderFinance()}
+function openModal(){ $('sessionForm').reset();$('sessionId').value='';$('modalTitle').textContent='Novo ensaio';$('date').value=today();$('time').value='09:00';$('deposit').value='0';$('extraPayments').value='0';$('status').value='Agendado';$('contract').value='Enviar';$('balancePreview').textContent='Saldo em aberto: R$ 0,00';$('modalBackdrop').classList.add('open');$('clientName').focus()}
+function editSession(id){const s=sessions.find(x=>x.id===id);if(!s)return; $('sessionId').value=s.id;['clientName','phone','sessionType','status','date','time','location','packageValue','deposit','extraPayments','notes'].forEach(k=>$(k).value=s[k]??'');$('contract').value=s.contract||'Enviar';$('modalTitle').textContent='Editar ensaio';updateBalancePreview();$('modalBackdrop').classList.add('open')}
+function closeModal(){$('modalBackdrop').classList.remove('open')}
+function updateBalancePreview(){const total=Number($('packageValue').value)||0,paid=(Number($('deposit').value)||0)+(Number($('extraPayments').value)||0);$('balancePreview').textContent=`Recebido: ${money(paid)} · Saldo em aberto: ${money(Math.max(0,total-paid))}`;if(paid>total)$('balancePreview').textContent+=` · Atenção: pagamentos ultrapassam o pacote em ${money(paid-total)}.`}
+function whatsapp(id){const s=sessions.find(x=>x.id===id);if(!s)return;if(!s.phone){toast('Adicione o telefone/WhatsApp do cliente primeiro.');return}let phone=s.phone.replace(/\D/g,'');if(phone.length===11||phone.length===10)phone='55'+phone;window.open('https://wa.me/'+phone,'_blank','noopener,noreferrer')}
+function exportCSV(){const header=['Cliente','Telefone','Tipo de ensaio','Data','Hora','Local','Estado','Pacote (R$)','Sinal (R$)','Pagamentos adicionais (R$)','Recebido (R$)','Saldo (R$)','Observações'];const rows=sessions.filter(s=>active(s)&&matchesMonth(s,'financeMonthFilter')).map(s=>[s.clientName,s.phone,s.sessionType,s.date,s.time,s.location,s.status,s.packageValue,s.deposit,s.extraPayments,getPaid(s),due(s),s.notes]);const csv=[header,...rows].map(row=>row.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(';')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='ensaios-fotograficos.csv';a.click();URL.revokeObjectURL(url)}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>setPage(b.dataset.page)));document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>setPage(b.dataset.goto)));
+$('newBtn').onclick=openModal;$('newBtn2').onclick=openModal;$('closeModal').onclick=closeModal;$('cancelModal').onclick=closeModal;$('modalBackdrop').addEventListener('click',e=>{if(e.target===$('modalBackdrop'))closeModal()});
+$('prevMonth').onclick=()=>{viewDate.setMonth(viewDate.getMonth()-1);renderCalendars()};$('nextMonth').onclick=()=>{viewDate.setMonth(viewDate.getMonth()+1);renderCalendars()};$('todayBtn').onclick=()=>{viewDate=new Date();viewDate.setDate(1);renderCalendars()};$('searchInput').addEventListener('input',renderSessionsTable);$('statusFilter').addEventListener('change',renderSessionsTable);$('exportBtn').onclick=exportCSV;
+['packageValue','deposit','extraPayments'].forEach(id=>$(id).addEventListener('input',updateBalancePreview));
+$('sessionForm').addEventListener('submit',e=>{e.preventDefault();const id=$('sessionId').value||(crypto.randomUUID?crypto.randomUUID():('s_'+Date.now()));const item={id,...Object.fromEntries(['clientName','phone','sessionType','status','date','time','location','notes'].map(k=>[k,$(k).value.trim()])),contract:$('contract').value,packageValue:Number($('packageValue').value)||0,deposit:Number($('deposit').value)||0,extraPayments:Number($('extraPayments').value)||0};if(item.deposit+item.extraPayments>item.packageValue&&!confirm('Os pagamentos ultrapassam o valor do pacote. Deseja salvar mesmo assim?'))return;const idx=sessions.findIndex(s=>s.id===id);if(idx>=0)sessions[idx]=item;else sessions.push(item);persist();closeModal();toast(idx>=0?'Ensaio atualizado!':'Ensaio cadastrado!')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+$('accountBtn').addEventListener('click',async()=>{
+ if(cloudUser && supabaseClient){if(confirm('Deseja sair da conta?')){await supabaseClient.auth.signOut();cloudUser=null;setSyncStatus('Entre para sincronizar');$('accountBtn').textContent='Entrar / sincronizar';}}
+ else openAuth();
+});
+$('authClose').onclick=closeAuth;
+$('authBackdrop').addEventListener('click',e=>{if(e.target===$('authBackdrop'))closeAuth()});
+$('authForm').addEventListener('submit',handleAuthSubmit);
+$('signUpBtn').addEventListener('click',handleSignUp);
+setupMonthFilters();renderAll();
+initCloud();
+</script>
+</body>
+</html>
